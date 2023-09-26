@@ -34,11 +34,11 @@ if selected == "Brentcliff":
     speed= st.empty()
     while True:
         webreq = requests.get('https://retro.umoiq.com/service/publicXMLFeed?command=predictions&a=ttc&stopId=2247&routeTag=54')
-        soup = BeautifulSoup(webreq.content,'lxml')
+        soup = BeautifulSoup(webreq.content)
         arrival = int((soup.find('prediction').attrs)['seconds'])
         vehicalid = (soup.find('prediction').attrs)['vehicle']
         inforeq = requests.get('https://retro.umoiq.com/service/publicXMLFeed?command=vehicleLocations&a=ttc&r=54&t=0')
-        soupinfo = BeautifulSoup(inforeq.content,'lxml')
+        soupinfo = BeautifulSoup(inforeq.content)
         vehinfo = (soupinfo.find(id=f'{vehicalid}').attrs)['speedkmhr']
         if arrival > 60:
             min = (soup.find('prediction').attrs)['minutes']
@@ -57,11 +57,11 @@ if selected == "Hanna":
     speed = st.empty()
     while True:
         webreq = requests.get('https://retro.umoiq.com/service/publicXMLFeed?command=predictions&a=ttc&stopId=2251&routeTag=54')
-        soup = BeautifulSoup(webreq.content,'lxml')
+        soup = BeautifulSoup(webreq.content)
         arrival = int((soup.find('prediction').attrs)['seconds'])
         vehicalid = (soup.find('prediction').attrs)['vehicle']
         inforeq = requests.get('https://retro.umoiq.com/service/publicXMLFeed?command=vehicleLocations&a=ttc&r=54&t=0')
-        soupinfo = BeautifulSoup(inforeq.content,'lxml')
+        soupinfo = BeautifulSoup(inforeq.content)
         vehinfo = (soupinfo.find(id=f'{vehicalid}').attrs)['speedkmhr']
         
         if arrival > 60:
